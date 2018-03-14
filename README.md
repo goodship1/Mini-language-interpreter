@@ -8,11 +8,11 @@ Interpreter for a toy programming language
 
 ```python
 
-a = 20
+a = 20;
 if(a < 10){
-    print("wow a is small")
+    print("wow a is small");
     }
 else{
-    print(a+1)
+    print(a+1);
     }
 ```
