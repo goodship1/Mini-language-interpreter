@@ -13,6 +13,6 @@ if(a < 10){
     print("wow a is small");
     }
 else{
-    print(a+1);
+    print(a);
     }
 ```
