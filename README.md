@@ -1,4 +1,4 @@
-# interpreter
+# Interpreter
 
 Interpreter for a toy programming language
 
