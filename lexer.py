@@ -1,5 +1,5 @@
 import ply.lex as lex
-
+import re
 
 class Lexer(object):
 
@@ -24,4 +24,30 @@ class Lexer(object):
   t_ignore = r'\t'#ignore white spaces
   t_name = r'[a-zA-Z_][a-zA-Z0-9_]*'#names must start with a letter and not a number
 
-  reserved = {"print":"PRINT","if":"IF","else","ELSE"}#reversered key words
+  reserved = {"print":"PRINT","if":"IF","else","ELSE"}#reserved key words
+
+  def t_name(self,t):
+      """tokenzies names"""
+     r'[a-zA-Z_][a-zA-Z0-9_]*'
+     return t
+
+  def closingbrace(self,t):
+      r'\}'
+      return t
+
+  def openbrace(self,t):
+      r'\{'
+      return t
+
+  def leftpara(self,t):
+      r'\('
+      return t
+
+  def rightpara(self,t):
+      r'\)'
+      return t
+
+  def run_Lexer(self):
+
+      "used to run lexer"""
+      pass
