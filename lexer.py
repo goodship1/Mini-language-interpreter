@@ -8,7 +8,7 @@ class Lexer(object):
 
   tokens = ("name","plus","minus","lessthan","equals",
             "if","else","openingpara","closingpara","openbrace","closingbrace",
-            "string"
+            "string","number"
             )
 
   t_plus = r'\+'
@@ -56,6 +56,9 @@ class Lexer(object):
       return t
 
   def t_string(self,t):
+      pass
+
+  def t_number(self,t):
       pass
 
 
