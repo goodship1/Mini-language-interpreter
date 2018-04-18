@@ -12,10 +12,11 @@ class Lexer(object):
 
   t_plus = r'\+'
   t_minus = r'-'
+  t_colon = r';'
   t_lessthan = r'<'
   t_equals = r'='
   t_greaterthan = r'>'
   t_ignore = r'\t'#ignore white spaces
   t_name = r'[a-zA-Z_][a-zA-Z0-9_]*'#names must start with a letter and not a number
 
-  reserved = dict()
+  reserved = {"print":"PRINT","if":"IF","else","ELSE"}
