@@ -1,9 +1,9 @@
 # Interpreter
 
-Interpreter for a toy programming language
+Interpreter for a toy programming language writen using python using ply
 
 
-# Toy Language 
+# Toy Language
 
 
 ```python
