@@ -31,25 +31,32 @@ class Lexer(object):
      r'[a-zA-Z_][a-zA-Z0-9_]*'
      return t
 
-  def closingbrace(self,t):
+  def t_closingbrace(self,t):
       r'\}'
       return t
 
-  def openbrace(self,t):
+  def t_openbrace(self,t):
       r'{'
       return t
 
-  def leftpara(self,t):
+  def t_leftpara(self,t):
       r'('
       return t
 
-  def rightpara(self,t):
+  def t_rightpara(self,t):
       r'\)'
       return t
 
-  def equals(self,t):
+  def t_equals(self,t):
       r'='
       return t
+
+  def t_greaterthan(self,t):
+      r'>'
+      return t
+
+  def t_string(self,t):
+      pass
 
 
 
