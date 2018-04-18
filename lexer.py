@@ -17,10 +17,10 @@ class Lexer(object):
   t_lessthan = r'<'
   t_equals = r'='
   t_greaterthan = r'>'
-  t_leftpara = r'\('
-  t_rightpara = r'\)'
-  t_openbrace = r'\{'
-  t_closingbrace = r'\}'
+  t_leftpara = r'('
+  t_rightpara = r')'
+  t_openbrace = r'{'
+  t_closingbrace = r'}'
   t_ignore = r'\t'#ignore white spaces
   t_name = r'[a-zA-Z_][a-zA-Z0-9_]*'#names must start with a letter and not a number
 
@@ -36,16 +36,23 @@ class Lexer(object):
       return t
 
   def openbrace(self,t):
-      r'\{'
+      r'{'
       return t
 
   def leftpara(self,t):
-      r'\('
+      r'('
       return t
 
   def rightpara(self,t):
       r'\)'
       return t
+
+  def equals(self,t):
+      r'='
+      return t
+
+
+
 
   def run_Lexer(self):
 
