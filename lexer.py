@@ -63,7 +63,9 @@ class Lexer(object):
       pass
 
   def t_number(self,t):
-      pass
+      r'\d+'
+      t.value = int(t.value)
+      return t
 
 
   def t_error(self,t):
