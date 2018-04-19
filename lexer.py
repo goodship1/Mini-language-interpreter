@@ -55,10 +55,18 @@ class Lexer(object):
       r'>'
       return t
 
+  def t_plus(self,t):
+      r'+'
+      return t
+
   def t_string(self,t):
       pass
 
   def t_number(self,t):
+      pass
+
+
+  def t_error(self,t):
       pass
 
 
