@@ -2,51 +2,80 @@ import ply.lex as lex
 import re
 
 
-"""tuple of tokens for tokenzing"""
+"""list of tokens for tokenzing"""
 
 
-tokens = ("name","plus","minus","lessthan","equals",
-            "if","else","openingpara","closingpara","openbrace","closingbrace",
-            "string","number","colon","greaterthan"
-            )
+tokens = ['NAME',"PLUS","MINUS","EQUALS",
+            "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
+            "STRING","NUMBER","COLON",'GREATERTHAN','NEWLINE',"IF","ELSE","PRINT"
+            ]
 
 
 """simple tokens"""
-t_plus = r'\+'
-t_minus = r'-'
-t_colon = r';'
-t_lessthan = r'<'
-t_equals = r'='
-t_greaterthan = r'\>'
-t_openingpara = r'\('
-t_closingpara = r'\)'
-t_openbrace = r'{'
-t_closingbrace = r'}'
-t_ignore = r't'#ignore white spaces
-t_name = r'[a-zA-Z_][a-zA-Z0-9_]*'#names must start with a letter and not a number
+t_PLUS = r'\+'
+t_IF = "if"
+t_ELSE = "else"
+t_PRINT = "print"
+t_MINUS= r'-'
+t_COLON = r'\;'
+t_EQUALS = r'='
+t_GREATERTHAN = r'>'
+t_OPENINGPARA= r'\('
+t_CLOSINGPARA= r'\)'
+t_OPENBRACE = r'{'
+t_CLOSINGBRACE= r'}'
+t_ignore = "\t"#ignore white spaces
 
-reserved = {"print":"PRINT","if":"IF","else":"ELSE"}#reserved key words
 
 """more advance rules for token"""
 
 
-def t_number(t):
+def t_error(t):
+    """error handling of lexer"""
+    t.lexer.skip(1)
+
+
+def t_NAME(t):
+    """tokens for name must check if not a reserved word"""
+    r'[a-zA-Z_][a-zA-Z0-9_]*'#
+    return t
+
+def t_NUMBER(t):
     """token for ints"""
     r'\d+'
     t.value = int(t.value)
     return t
 
-def t_string(t):
+def t_STRING(t):
     """token for string"""
     r'(\".*\"|\'.*\')'
     t.value = t.value[1:-1]
     return t
 
 
-def t_error(t):
-    """error handling of lexer"""
-    print("this is an error %s"%t.value[0])
-    t.skip(1)
 
 
-lex.lex()
+def t_NEWLINE(t):
+    r'\n+'
+    t.lexer.lineno+=len(t.value)
+    return t
+
+lex.lex()#builds are lexer with token
+
+
+toy = """a = 20;
+if(a < 10){
+    print("wow a is small");
+    }
+else{
+    print(a);
+    }
+"""
+
+lex.input(toy)
+
+while(True):
+    tok = lex.token()
+    print(tok)
+    if not tok:
+        break
