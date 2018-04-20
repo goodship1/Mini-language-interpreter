@@ -60,8 +60,8 @@ class Lexer(object):
       return t
 
   def t_string(self,t):
-
-      t.value = str(t.value)
+      r'(\".*\"|\'.*\')'
+      t.value = t.value[1:-1]
       return t
 
   def t_number(self,t):
@@ -70,10 +70,13 @@ class Lexer(object):
       return t
 
   def t_newline(self,t):
-      pass
+      r'\n+'
+      t.lexer.lineno += len(t.value)
+      return t
 
   def t_error(self,t):
-      pass
+      print("illegal declaration %s"%t.value[0])
+      t.lexer.skip(1)
 
 
 
