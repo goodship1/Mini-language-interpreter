@@ -4,27 +4,28 @@ import re
 
 """list of tokens for tokenzing"""
 
+reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
-tokens = ['NAME',"PLUS","MINUS","EQUALS",
+tokens = ['NAME',"PLUS","MINUS","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",'GREATERTHAN','NEWLINE',"IF","ELSE","PRINT"
-            ]
+            "STRING","NUMBER","COLON",""'NEWLINE'
+            ]+list(reserved.values())
 
 
 """simple tokens"""
 t_PLUS = r'\+'
-t_IF = "if"
-t_ELSE = "else"
 t_PRINT = "print"
 t_MINUS= r'-'
 t_COLON = r'\;'
+t_NUMBER = r'\d+'
 t_EQUALS = r'='
-t_GREATERTHAN = r'>'
+t_LESSTHAN = r'\<'
 t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
 t_OPENBRACE = r'{'
 t_CLOSINGBRACE= r'}'
 t_ignore = "\t"#ignore white spaces
+
 
 
 """more advance rules for token"""
@@ -35,24 +36,18 @@ def t_error(t):
     t.lexer.skip(1)
 
 
+
 def t_NAME(t):
-    """tokens for name must check if not a reserved word"""
-    r'[a-zA-Z_][a-zA-Z0-9_]*'#
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    if t.value in reserved:
+        t.value=reserved[t.value]
     return t
 
-def t_NUMBER(t):
-    """token for ints"""
-    r'\d+'
-    t.value = int(t.value)
-    return t
 
 def t_STRING(t):
-    """token for string"""
     r'(\".*\"|\'.*\')'
     t.value = t.value[1:-1]
     return t
-
-
 
 
 def t_NEWLINE(t):
@@ -79,3 +74,4 @@ while(True):
     print(tok)
     if not tok:
         break
+        
