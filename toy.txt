@@ -1,0 +1,6 @@
+a = 20;if(a < 10){
+    print("wow a is small");
+    }
+else{
+    print(a);
+    }

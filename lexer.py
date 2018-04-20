@@ -71,6 +71,5 @@ lex.input(toy)
 
 while(True):
     tok = lex.token()
-    print(tok)
     if not tok:
         break
