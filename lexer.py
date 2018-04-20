@@ -60,13 +60,17 @@ class Lexer(object):
       return t
 
   def t_string(self,t):
-      pass
+
+      t.value = str(t.value)
+      return t
 
   def t_number(self,t):
       r'\d+'
       t.value = int(t.value)
       return t
 
+  def t_newline(self,t):
+      pass
 
   def t_error(self,t):
       pass
