@@ -46,7 +46,7 @@ def t_NAME(t):
 
 def t_STRING(t):
     r'(\".*\"|\'.*\')'
-    t.value = t.value[1:-1]
+    t.value = str(t.value[1:-1])
     return t
 
 
@@ -74,4 +74,3 @@ while(True):
     print(tok)
     if not tok:
         break
-        
