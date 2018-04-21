@@ -15,10 +15,7 @@ toy_one = """
 
 string_test = "a = hello" #hello should be tokenzed to string and a name and equals as EQUALS
 number_test = "a = 200"
-
-
-
-
+test_Reserved_words = "if else print"
 
 
 """copy of lexer.py source list of tokens for tokenzing"""
@@ -69,37 +66,17 @@ def t_STRING(t):
     return t
 
 
-def t_NEWLINE(t):
     r'\n+'
     t.lexer.lineno+=len(t.value)
+    def t_NEWLINE(t):
     return t
 
 lex.lex()#builds are lexer with token
 
 
-lex.input(toy)
-
-while(True):
-    tok = lex.token()
-    if not tok:
-        break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#lex.input(toy)
 
 
 def testing_Tnumber():
-    """testing
+    """testing of t_number"""
+    pass
