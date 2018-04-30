@@ -6,7 +6,7 @@ import re
 
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
-tokens = ["NAME","PLUS","MINUS","EQUALS","LESSTHAN",
+tokens = ["ID","PLUS","MINUS","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
             "STRING","NUMBER","COLON",""'NEWLINE'
             ]+list(reserved.values())
@@ -24,16 +24,24 @@ t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
 t_OPENBRACE = r'{'
 t_CLOSINGBRACE= r'}'
-t_ignore = "\t"#ignore white spaces
+t_ignore = "\t"
 
 
 
 """more advance rules for token"""
 
-def t_NAME(t):
+def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value in reserved:
-        t.value = reserved[t.value]
+    if t.value in reserved.keys():
+       t.value = reserved[t.value]
+    return t
+
+
+
+def t_STRING(t):
+    """string regular expression"""
+    r'(\".*\"|\'.*\')'
+    t.value = t.value[1:-1]
     return t
 
 
@@ -43,13 +51,6 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-
-
-def t_STRING(t):
-    """string regular expression"""
-    r'(\".*\"|\'.*\')'
-    t.value = str(t.value[1:-1])
-    return t
 
 
 def t_NEWLINE(t):
@@ -64,12 +65,13 @@ lex.lex()#builds are lexer with token
 toy = """
 a = 20;
 if(a < 10){
-    print("wow a is small");
+    print('wow a is small');
     }
 else{
     print(a);
     }
 """
+
 lex.input(toy)
 while(True):
     tok = lex.token()
