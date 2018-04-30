@@ -24,6 +24,7 @@ t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
 t_OPENBRACE = r'{'
 t_CLOSINGBRACE= r'}'
+t_STRING = r'(\".*\"|\'.*\')'
 t_ignore = "\t"
 
 
@@ -32,17 +33,11 @@ t_ignore = "\t"
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value in reserved.keys():
-       t.value = reserved[t.value]
+    if t.value in reserved:
+       t.type = reserved[t.value]
     return t
 
 
-
-def t_STRING(t):
-    """string regular expression"""
-    r'(\".*\"|\'.*\')'
-    t.value = t.value[1:-1]
-    return t
 
 
 
@@ -65,7 +60,7 @@ lex.lex()#builds are lexer with token
 toy = """
 a = 20;
 if(a < 10){
-    print('wow a is small');
+    print("wow a is small");
     }
 else{
     print(a);
