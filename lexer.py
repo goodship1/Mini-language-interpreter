@@ -55,21 +55,3 @@ def t_NEWLINE(t):
     return t
 
 lex.lex()#builds are lexer with token
-
-#toy programming language for interperter
-toy = """
-a = 20;
-if(a < 10){
-    print("wow a is small");
-    }
-else{
-    print(a);
-    }
-"""
-
-lex.input(toy)
-while(True):
-    tok = lex.token()
-    print(tok)
-    if not tok:
-        break
