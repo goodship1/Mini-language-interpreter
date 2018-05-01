@@ -6,7 +6,7 @@ import re
 
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
-tokens = ["ID","PLUS","MINUS","EQUALS","LESSTHAN",
+tokens = ["ID","PLUS","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
             "STRING","NUMBER","COLON",""'NEWLINE'
             ]+list(reserved.values())
@@ -14,8 +14,6 @@ tokens = ["ID","PLUS","MINUS","EQUALS","LESSTHAN",
 
 """simple tokens"""
 t_PRINT = "print"
-t_PLUS = r'\+'
-t_MINUS= r'-'
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
