@@ -6,14 +6,13 @@ import re
 
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
-tokens = ["ID","PLUS","EQUALS","LESSTHAN",
+tokens = ["ID","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
             "STRING","NUMBER","COLON",""'NEWLINE'
             ]+list(reserved.values())
 
 
 """simple tokens"""
-t_PRINT = "print"
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
