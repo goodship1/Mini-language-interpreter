@@ -5,21 +5,12 @@ from ply.yacc import yacc
 
 def p_assign(p):
     '''assign : ID EQUALS expression COLON'''
-    p[0] = p[1]
+    pass
 
 def p_expression(p):
     pass
 
-def p_expression_lessthan(p):
+def p_statement(p):
     pass
-
-def p_assign_number(p):
-    '''assign : ID EQUALS ter'''
-    p[0] = p[1]
-
-
- def p_expression_if(p):
-     pass
-
 
 yacc()
