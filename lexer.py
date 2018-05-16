@@ -35,7 +35,8 @@ def t_ID(t):
     return t
 
 
-
+def t_COMMENTS(t):
+    pass
 
 
 def t_error(t):

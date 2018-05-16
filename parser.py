@@ -8,8 +8,8 @@ precednece = tuple()
 
 
 def p_assign(p):
-    '''assign : ID EQUALS expression COLON'''
-    p[0] = p[1]
+    '''assign : ID EQUALS NUMBER COLON'''
+    p[0] = p[2]
 
 def p_expression_lessthan(p):
     '''expression: ID LESSTHAN NUMBER'''
@@ -21,7 +21,8 @@ def p_if_statement(p):
 def p_else_statement(p):
     pass
 
-def p_group_expression(p):
+def p_expression_group(p):
+    '''expression : OPENBRACE expression CLOSINGBRACE'''
     pass
 
 def p_expression_number(p):
@@ -44,6 +45,6 @@ def p_statement(p):
     pass
 
 def p_error(p):
-    pass
+    print("parser error")
 
 yacc()
