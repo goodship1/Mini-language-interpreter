@@ -30,12 +30,20 @@ def p_expression_number(p):
 
 
 def p_expression_ID(p):
-    pass
+    ''' expression : ID'''
+    p[0] = p[1]
+
+def p_expression_string(p):
+    '''expression : string'''
+    p[0]  = p[1]
 
 def p_print_statement(p):
-    pass
+    print(p[1])
 
 def p_statement(p):
+    pass
+
+def p_error(p):
     pass
 
 yacc()
