@@ -35,6 +35,13 @@ def t_ID(t):
     return t
 
 
+def t_TRUE(t):
+    pass
+
+
+def t_FALSE(t):
+    pass
+
 def t_COMMENTS(t):
     pass
 

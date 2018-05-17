@@ -7,12 +7,12 @@ names = dict()#stores names data
 precednece = tuple()
 
 
-def p_assign(p):
-    '''assign : ID EQUALS NUMBER COLON'''
+def p_statment_assign(p):
+    '''assign : ID EQUALS expression COLON'''
     p[0] = p[2]
 
 def p_expression_lessthan(p):
-    '''expression: ID LESSTHAN NUMBER'''
+    '''expression: ID LESSTHAN expression'''
     p[0] = p[1] < p[3]
 
 def p_if_statement(p):
@@ -35,10 +35,11 @@ def p_expression_ID(p):
     p[0] = p[1]
 
 def p_expression_string(p):
-    '''expression : string'''
+    '''expression : STRING'''
     p[0]  = p[1]
 
-def p_print_statement(p):
+def p_statment_print(p):
+    '''statement : expression'''
     print(p[1])
 
 def p_statement(p):
