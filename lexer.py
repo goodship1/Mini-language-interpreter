@@ -36,11 +36,13 @@ def t_ID(t):
 
 
 def t_TRUE(t):
-    pass
+    r'False'
+    return t
 
 
 def t_FALSE(t):
-    pass
+    r'FALSE'
+    return t
 
 def t_COMMENTS(t):
     pass

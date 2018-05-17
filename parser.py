@@ -23,10 +23,10 @@ def p_else_statement(p):
 
 def p_expression_group(p):
     '''expression : OPENBRACE expression CLOSINGBRACE'''
-    pass
+    p[0] = p[2]
 
-def p_expression_number(p):
-    '''expression : NUMBER'''
+def p_factor_number(p):
+    '''factor : NUMBER'''
     p[0] = p[1]
 
 
@@ -42,8 +42,9 @@ def p_statment_print(p):
     '''statement : expression'''
     print(p[1])
 
-def p_statement(p):
+def P_boolean(p):
     pass
+
 
 def p_error(p):
     print("parser error")
