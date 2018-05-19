@@ -16,7 +16,8 @@ def p_expression_lessthan(p):
     p[0] = p[1] < p[3]
 
 def p_if_statement(p):
-    pass
+    '''if: IF OPENINGPARA expression CLOSINGPARA'''
+    p[0] = p[2]
 
 def p_else_statement(p):
     pass
