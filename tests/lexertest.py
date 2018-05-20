@@ -77,7 +77,16 @@ lex.lex()#builds are lexer with token
 
 #lex.input(toy)
 
+""" tests for more advance lexer rules"""
 
-def testing_Tnumber():
+
+def testing_TNUMBER():
     """testing of t_number"""
+    pass
+
+
+def testing_tSTRING():
+    pass
+
+def testing_tNAME():
     pass
