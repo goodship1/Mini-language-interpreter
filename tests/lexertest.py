@@ -17,7 +17,7 @@ string_Test = "a = hello" #hello should be tokenzed to string and a name and equ
 number_Test = "a = 200"
 test_Reserved_words = "if else print"
 
-
+tests = [string_Test,number_Test,test_Reserved_words,toy_Language]
 
 """copy of lexer.py source list of tokens for tokenzing"""
 
@@ -67,10 +67,11 @@ def t_STRING(t):
     return t
 
 
-    r'\n+'
-    t.lexer.lineno+=len(t.value)
+    
     def t_NEWLINE(t):
-    return t
+        r'\n+'
+        t.lexer.lineno+=len(t.value)
+        return t
 
 lex.lex()#builds are lexer with token
 
