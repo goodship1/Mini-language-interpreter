@@ -15,9 +15,11 @@ toy_Language = """
 
 string_Test = "hello" #hello should be tokenzed to string and a name and equals as EQUALS
 number_Test = "200"
-test_Reserved_words = "if else print"
+test_Reserved_words = ["if","print","else"]
 test_Assignment = "a = hello"
 test_Name = "GOODSHIP1"
+test_Braces = ['{',"}","(",")"]
+test_Operations = ["=","<"]
 
 tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment,test_Name]
 
@@ -118,7 +120,14 @@ def testing_tNAME():
     assert("LexToken(NAME,'GOODSHIP1',1,0)") == str(tokens[5])
 
 
+def testing_EQUALS():
+    pass
 
+def testing_PRINT():
+    pass
+
+def testing_LESSTHAN():
+    pass
 
 def testing_IF():
     pass
