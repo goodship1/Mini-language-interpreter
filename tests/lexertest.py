@@ -13,11 +13,12 @@ toy_Language = """
         """
 
 
-string_Test = "a = hello" #hello should be tokenzed to string and a name and equals as EQUALS
-number_Test = "a = 200"
+string_Test = "hello" #hello should be tokenzed to string and a name and equals as EQUALS
+number_Test = "200"
 test_Reserved_words = "if else print"
+test_Assignment = "a = hello"
 
-tests = [string_Test,number_Test,test_Reserved_words,toy_Language]
+tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment]
 
 """copy of lexer.py source list of tokens for tokenzing"""
 
@@ -41,6 +42,7 @@ t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
 t_OPENBRACE = r'{'
 t_CLOSINGBRACE= r'}'
+t_STRING = r'(\".*\"|\'.*\')'
 t_ignore = "\t"#ignore white spaces
 
 
@@ -57,17 +59,13 @@ def t_error(t):
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     if t.value in reserved:
-        t.value=reserved[t.value]
+        t.type=reserved[t.value]
     return t
 
 
-def t_STRING(t):
-    r'(\".*\"|\'.*\')'
-    t.value = str(t.value[1:-1])
-    return t
 
 
-    
+
     def t_NEWLINE(t):
         r'\n+'
         t.lexer.lineno+=len(t.value)
@@ -76,14 +74,22 @@ def t_STRING(t):
 lex.lex()#builds are lexer with token
 
 
-#lex.input(toy)
+
 
 """ tests for more advance lexer rules"""
 
 
-def testing_TNUMBER():
+def testing_tNUMBER():
     """testing of t_number"""
-    pass
+    lex.input(tests[1])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        print(tok)
+        if not tok:
+            break      # No more input
+    assert("LexToken(NUMBER,'200',1,0)") == str(tokens[0])
 
 
 def testing_tSTRING():
@@ -91,3 +97,5 @@ def testing_tSTRING():
 
 def testing_tNAME():
     pass
+
+testing_tNUMBER()
