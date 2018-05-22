@@ -17,8 +17,9 @@ string_Test = "hello" #hello should be tokenzed to string and a name and equals 
 number_Test = "200"
 test_Reserved_words = "if else print"
 test_Assignment = "a = hello"
+test_Name = "GOODSHIP1"
 
-tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment]
+tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment,test_Name]
 
 """copy of lexer.py source list of tokens for tokenzing"""
 
@@ -42,7 +43,7 @@ t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
 t_OPENBRACE = r'{'
 t_CLOSINGBRACE= r'}'
-t_STRING = r'(\".*\"|\'.*\')'
+t_STRING=r'(\".*\"|\'.*\')'
 t_ignore = "\t"#ignore white spaces
 
 
@@ -86,16 +87,41 @@ def testing_tNUMBER():
     while True:
         tok = lex.token()
         tokens.append(tok)
-        print(tok)
         if not tok:
             break      # No more input
     assert("LexToken(NUMBER,'200',1,0)") == str(tokens[0])
 
 
 def testing_tSTRING():
-    pass
+    """testing of t_number"""
+    lex.input(tests[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break      # No more input
+    assert("LexToken(STRING,'hello',1,0)") == str(tokens[0])
+
+
+
 
 def testing_tNAME():
+    """testing of t_NAME"""
+    lex.input(test[5])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(NAME,'GOODSHIP1',1,0)") == str(tokens[5])
+
+
+
+
+def testing_IF():
     pass
 
-testing_tNUMBER()
+def testing_ELSE():
+    pass
