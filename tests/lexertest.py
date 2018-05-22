@@ -121,16 +121,46 @@ def testing_tNAME():
 
 
 def testing_EQUALS():
+    lex.input(test_Operations[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(EQUALS,'=',1,0)") == str(tokens[0])
+
+def testing_LESSTHAN():
+    lex.input(test_Operations[1])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(LESSTHAN,'<',1,0)") == str(tokens[1])
+
+
+
+def testing_OPENINGPARA():
+    pass
+
+
+def testing_CLOSINGPARA():
+    pass
+
+
+def testing_OPENBRACE():
+    pass
+
+
+def testing_CLOSEBRACE():
     pass
 
 def testing_PRINT():
     pass
 
-def testing_LESSTHAN():
-    pass
 
-def testing_IF():
-    pass
 
 def testing_ELSE():
     pass
