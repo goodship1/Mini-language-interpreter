@@ -45,6 +45,7 @@ def t_FALSE(t):
     return t
 
 def t_COMMENTS(t):
+    r'\#.*'
     pass
 
 
