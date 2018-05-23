@@ -20,6 +20,7 @@ test_Assignment = "a = hello"
 test_Name = "GOODSHIP1"
 test_Braces = ['{',"}","(",")"]
 test_Operations = ["=","<"]
+test_colon = ';'
 
 tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment,test_Name]
 
@@ -186,9 +187,46 @@ def testing_CLOSEBRACE():
     assert("LexToken(CLOSINGBRACE,'}',1,0)")) == str(token[0])
 
 def testing_PRINT():
-    pass
+    lex.input(test_Reserved_words[1])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(PRINT,'print',1,0)")) == str(token[0])
+
+def testing_IF():
+    lex.input(test_Reserved_words[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(IF,'if',1,0)")) == str(token[0])
+
+
+def testing_COLON():
+    lex.input(test_colon)
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(COLON,';',1,0)")) == str(token[0])
+
+
 
 
 
 def testing_ELSE():
-    pass
+    lex.input(test_Reserved_words[2])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(ELSE,'else',1,0)")) == str(token[0])
