@@ -111,14 +111,14 @@ def testing_tSTRING():
 
 def testing_tNAME():
     """testing of t_NAME"""
-    lex.input(test[5])
+    lex.input(tests[5])
     tokens = list()
     while True:
         tok = lex.token()
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(NAME,'GOODSHIP1',1,0)") == str(tokens[5])
+    assert("LexToken(NAME,'GOODSHIP1',1,0)") == str(tokens[0])
 
 
 def testing_EQUALS():
@@ -139,30 +139,30 @@ def testing_LESSTHAN():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(LESSTHAN,'<',1,0)") == str(tokens[1])
+    assert("LexToken(LESSTHAN,'<',1,0)") == str(tokens[0])
 
 
 
 def testing_OPENINGPARA():
-    lex.input(test_Braces[0])
+    lex.input(test_Braces[2])
     tokens = list()
     while True:
         tok = lex.token()
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(OPENINGPARA,'(',1,0)")) == str(token[0])
+    assert("LexToken(OPENINGPARA,'(',1,0)") == str(tokens[0])
 
 
 def testing_CLOSINGPARA():
-    lex.input(test_Braces[0])
+    lex.input(test_Braces[3])
     tokens = list()
     while True:
         tok = lex.token()
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(CLOSINGPARA,')',1,0)")) == str(token[0])
+    assert("LexToken(CLOSINGPARA,')',1,0)") == str(tokens[0])
 
 
 def testing_OPENBRACE():
@@ -173,18 +173,18 @@ def testing_OPENBRACE():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(OPENINGBRACE,'{',1,0)")) == str(token[0])
+    assert("LexToken(OPENBRACE,'{',1,0)") == str(tokens[0])
 
 
 def testing_CLOSEBRACE():
-    lex.input(test_Braces[0])
+    lex.input(test_Braces[1])
     tokens = list()
     while True:
         tok = lex.token()
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(CLOSINGBRACE,'}',1,0)")) == str(token[0])
+    assert("LexToken(CLOSINGBRACE,'}',1,0)") == str(tokens[0])
 
 def testing_PRINT():
     lex.input(test_Reserved_words[1])
@@ -194,7 +194,7 @@ def testing_PRINT():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(PRINT,'print',1,0)")) == str(token[0])
+    assert("LexToken(PRINT,'print',1,0)") == str(tokens[0])
 
 def testing_IF():
     lex.input(test_Reserved_words[0])
@@ -204,7 +204,7 @@ def testing_IF():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(IF,'if',1,0)")) == str(token[0])
+    assert("LexToken(IF,'if',1,0)") == str(tokens[0])
 
 
 def testing_COLON():
@@ -215,7 +215,7 @@ def testing_COLON():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(COLON,';',1,0)")) == str(token[0])
+    assert("LexToken(COLON,';',1,0)") == str(tokens[0])
 
 
 
@@ -229,4 +229,4 @@ def testing_ELSE():
         tokens.append(tok)
         if not tok:
             break
-    assert("LexToken(ELSE,'else',1,0)")) == str(token[0])
+    assert("LexToken(ELSE,'else',1,0)") == str(tokens[0])
