@@ -143,19 +143,47 @@ def testing_LESSTHAN():
 
 
 def testing_OPENINGPARA():
-    pass
+    lex.input(test_Braces[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(OPENINGPARA,'(',1,0)")) == str(token[0])
 
 
 def testing_CLOSINGPARA():
-    pass
+    lex.input(test_Braces[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(CLOSINGPARA,')',1,0)")) == str(token[0])
 
 
 def testing_OPENBRACE():
-    pass
+    lex.input(test_Braces[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(OPENINGBRACE,'{',1,0)")) == str(token[0])
 
 
 def testing_CLOSEBRACE():
-    pass
+    lex.input(test_Braces[0])
+    tokens = list()
+    while True:
+        tok = lex.token()
+        tokens.append(tok)
+        if not tok:
+            break
+    assert("LexToken(CLOSINGBRACE,'}',1,0)")) == str(token[0])
 
 def testing_PRINT():
     pass
