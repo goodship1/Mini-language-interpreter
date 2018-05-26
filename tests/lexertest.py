@@ -5,10 +5,10 @@ import re
 toy_Language = """
         a = 20;
         if(a < 10){
-            print("wow a is small");
+            print "wow a is small";
             }
         else{
-            print(a);
+            print a;
             }
         """
 
@@ -28,7 +28,7 @@ tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignmen
 
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
-tokens = ['NAME',"PLUS","MINUS","EQUALS","LESSTHAN",
+tokens = ['ID',"PLUS","MINUS","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
             "STRING","NUMBER","COLON",""'NEWLINE'
             ]+list(reserved.values())
@@ -58,7 +58,7 @@ def t_error(t):
 
 
 
-def t_NAME(t):
+def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     if t.value  in reserved:
         t.type=reserved[t.value]
