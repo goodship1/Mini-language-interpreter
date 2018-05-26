@@ -10,9 +10,9 @@ Interpreter for a toy programming language writen using python using ply
 
 a = 20;
 if(a < 10){
-    print("wow a is small");
+    print"wow a is small";
     }
 else{
-    print(a);
+    print a;
     }
 ```
