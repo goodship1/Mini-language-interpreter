@@ -13,7 +13,7 @@ toy_Language = """
         """
 
 
-string_Test = "hello" #hello should be tokenzed to string and a name and equals as EQUALS
+string_Test = "a =""hello" #hello should be tokenzed to string and a name and equals as EQUALS
 number_Test = "200"
 test_Reserved_words = ["if","print","else"]
 test_Assignment = "a = hello"
@@ -35,9 +35,7 @@ tokens = ['NAME',"PLUS","MINUS","EQUALS","LESSTHAN",
 
 
 """simple tokens"""
-t_PLUS = r'\+'
 t_PRINT = "print"
-t_MINUS= r'-'
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
@@ -62,7 +60,7 @@ def t_error(t):
 
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value in reserved:
+    if t.value  in reserved:
         t.type=reserved[t.value]
     return t
 
@@ -75,7 +73,18 @@ def t_NAME(t):
         t.lexer.lineno+=len(t.value)
         return t
 
+
+
+
 lex.lex()#builds are lexer with token
+lex.input(toy_Language)
+
+while True:
+    tok = lex.token()
+    print(tok)
+    if not tok:
+        break
+
 
 
 
