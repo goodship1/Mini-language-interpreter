@@ -113,7 +113,7 @@ def testing_tSTRING():
         tokens.append(tok)
         if not tok:
             break      # No more input
-    assert("LexToken(STRING,'hello',1,0)") == str(tokens[0])
+    assert("LexToken(STRING,'hello',1,0)") == str(tokens[1])
 
 
 
