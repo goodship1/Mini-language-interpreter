@@ -29,7 +29,7 @@ def p_expression_group(p):
                   |OPENBRACE factor CLOSINGBRACE'''
     p[0] = p[2]
 
-def P_expression(p):
+def p_expression(p):
     '''expression : factor'''
     p[0] = p[1]
 
