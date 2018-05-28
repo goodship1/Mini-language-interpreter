@@ -8,7 +8,8 @@ precednece = tuple()
 
 
 def p_statment_assign(p):
-    '''assign : ID EQUALS expression COLON'''
+    '''assign : ID EQUALS expression COLON
+              | ID EQUALS factor COLON'''
     p[0] = p[2]
 
 def p_expression_lessthan(p):
@@ -22,8 +23,13 @@ def p_if_statement(p):
 
 
 def p_expression_group(p):
-    '''expression : OPENBRACE expression CLOSINGBRACE'''
+    '''expression : OPENBRACE expression CLOSINGBRACE
+                  |OPENBRACE factor CLOSINGBRACE'''
     p[0] = p[2]
+
+def P_expression(p):
+    '''expression : factor'''
+    p[0] = p[1]
 
 def p_factor_number(p):
     '''factor : NUMBER'''
