@@ -12,15 +12,14 @@ def p_statment_assign(p):
     p[0] = p[2]
 
 def p_expression_lessthan(p):
-    '''expression: ID LESSTHAN expression'''
+    '''expression : ID LESSTHAN expression'''
     p[0] = p[1] < p[3]
 
 def p_if_statement(p):
-    '''if: IF OPENINGPARA expression CLOSINGPARA'''
+    '''if : IF OPENINGPARA expression CLOSINGPARA'''
     p[0] = p[2]
 
-def p_else_statement(p):
-    pass
+
 
 def p_expression_group(p):
     '''expression : OPENBRACE expression CLOSINGBRACE'''
@@ -43,8 +42,7 @@ def p_statment_print(p):
     '''statement : expression'''
     print(p[1])
 
-def P_boolean(p):
-    pass
+
 
 
 def p_error(p):
