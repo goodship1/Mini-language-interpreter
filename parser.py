@@ -13,11 +13,13 @@ def p_statment_assign(p):
     p[0] = p[2]
 
 def p_expression_lessthan(p):
-    '''expression : ID LESSTHAN expression'''
+    '''expression : ID LESSTHAN expression
+                  | ID LESSTHAN factor'''
     p[0] = p[1] < p[3]
 
 def p_if_statement(p):
-    '''if : IF OPENINGPARA expression CLOSINGPARA'''
+    '''if : IF OPENINGPARA expression CLOSINGPARA
+          | IF OPENINGPARA factor CLOSINGPARA'''
     p[0] = p[2]
 
 
