@@ -20,13 +20,13 @@ def p_expression_lessthan(p):
 def p_if_statement(p):
     '''if : IF OPENINGPARA expression CLOSINGPARA
           | IF OPENINGPARA factor CLOSINGPARA'''
-    p[0] = p[2]
+    p[0] = p[3]
 
 
 
 def p_expression_group(p):
     '''expression : OPENBRACE expression CLOSINGBRACE
-                  |OPENBRACE factor CLOSINGBRACE'''
+                  | OPENBRACE factor CLOSINGBRACE'''
     p[0] = p[2]
 
 def p_expression(p):
@@ -46,8 +46,10 @@ def p_expression_string(p):
     '''expression : STRING'''
     p[0]  = p[1]
 
-def p_statment_print(p):
-    '''statement : expression'''
+def p_print(p):
+    '''statement : PRINT STRING COLON
+                 | PRINT ID COLON'''
+
     print(p[1])
 
 
@@ -55,5 +57,15 @@ def p_statment_print(p):
 
 def p_error(p):
     print("parser error")
+
+toy_Language = """
+        a = 20;
+        if(a < 10){
+            print "wow a is small";
+            }
+        else{
+            print a;
+            }
+        """
 
 yacc()
