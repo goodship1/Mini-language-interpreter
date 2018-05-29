@@ -12,16 +12,15 @@ def p_statment_assign(p):
               | ID EQUALS factor COLON'''
     p[0] = p[2]
 
-def p_expression_lessthan(p):
+def p_lessthan(p):
     '''expression : ID LESSTHAN expression
                   | ID LESSTHAN factor'''
     p[0] = p[1] < p[3]
 
-def p_if_statement(p):
-    '''if : IF OPENINGPARA expression CLOSINGPARA
-          | IF OPENINGPARA factor CLOSINGPARA'''
+def p_ifstatement(p):
+    '''if : IF OPENINGPARA expression CLOSINGPARA ELSE
+          | IF OPENINGPARA factor CLOSINGPARA ELSE'''
     p[0] = p[3]
-
 
 
 def p_expression_group(p):
@@ -29,9 +28,6 @@ def p_expression_group(p):
                   | OPENBRACE factor CLOSINGBRACE'''
     p[0] = p[2]
 
-def p_expression(p):
-    '''expression : factor'''
-    p[0] = p[1]
 
 def p_factor_number(p):
     '''factor : NUMBER'''
@@ -49,23 +45,12 @@ def p_expression_string(p):
 def p_print(p):
     '''statement : PRINT STRING COLON
                  | PRINT ID COLON'''
-
-    print(p[1])
-
-
+    print(p[2])
 
 
 def p_error(p):
     print("parser error")
 
-toy_Language = """
-        a = 20;
-        if(a < 10){
-            print "wow a is small";
-            }
-        else{
-            print a;
-            }
-        """
+
 
 yacc()
