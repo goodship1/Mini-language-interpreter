@@ -2,9 +2,6 @@
 from lexer import tokens
 from ply.yacc import yacc
 
-names = dict()#stores names data
-
-precednece = tuple()
 
 
 def p_statment_assign(p):
