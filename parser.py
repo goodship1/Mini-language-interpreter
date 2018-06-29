@@ -4,10 +4,13 @@ from ply.yacc import yacc
 
 
 
-def p_statment_assign(p):
+def p_assign_factor(p):
     '''assign : ID EQUALS factor COLON'''
 
-    p[0] = ('assignment',p[3])
+    p[0] = ('assignment-factor',p[3])
+
+def p_assign_string(p):
+    pass
 
 def p_lessthan(p):
     '''expression : ID LESSTHAN factor'''
@@ -15,7 +18,7 @@ def p_lessthan(p):
 
 def p_ifstatement(p):
     '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA ELSE'''""
-    p[0] = ("lessthan-expression",p[4])
+    p[0] = ("lessthan-expression",p[5])
 
 
 def p_expression_group(p):
@@ -39,8 +42,9 @@ def p_expression_string(p):
     p[0]  = ("string-expression",p[1])
 
 def p_print(p):
-    '''statement : PRINT STRING COLON
+    '''expression : PRINT STRING COLON
                  | PRINT ID COLON'''
+    p[0] = ("print",p[2])
     print(p[2])
 
 
@@ -59,4 +63,5 @@ toy_Language = """
 
 
 ya = yacc()
-ya.parse("a = 20;")
+x = ya.parse("x = hello;")
+print(x)
