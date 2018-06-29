@@ -7,7 +7,7 @@ from ply.yacc import yacc
 def p_statment_assign(p):
     '''assign : ID EQUALS factor COLON'''
 
-    p[0] = p[3]
+    p[0] = ('assignment',p[3])
 
 def p_lessthan(p):
     '''expression : ID LESSTHAN factor'''
@@ -26,7 +26,7 @@ def p_expression_group(p):
 
 def p_factor_number(p):
     '''factor : NUMBER'''
-    p[0] = p[1]
+    p[0] = ("number-factor",p[1])
 
 
 
