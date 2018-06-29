@@ -15,13 +15,13 @@ def p_lessthan(p):
 
 def p_ifstatement(p):
     '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA ELSE'''""
-    p[0] = p[3]
+    p[0] = ("lessthan-expression",p[4])
 
 
 def p_expression_group(p):
     '''expression : OPENBRACE expression CLOSINGBRACE
                   | OPENBRACE factor CLOSINGBRACE'''
-    p[0] = p[2]
+    p[0] = ("group", p[2])
 
 
 def p_factor_number(p):
@@ -32,11 +32,11 @@ def p_factor_number(p):
 
 def p_expression_ID(p):
     ''' expression : ID'''
-    p[0] = p[1]
+    p[0] = ("id-expression",p[1])
 
 def p_expression_string(p):
     '''expression : STRING'''
-    p[0]  = p[1]
+    p[0]  = ("string-expression",p[1])
 
 def p_print(p):
     '''statement : PRINT STRING COLON
