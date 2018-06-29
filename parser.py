@@ -44,8 +44,10 @@ def p_expression_string(p):
 def p_print(p):
     '''expression : PRINT STRING COLON
                  | PRINT ID COLON'''
-    p[0] = ("print",p[2])
-    print(p[2])
+    if(p[2]== "STRING"):
+        p[0] = ("print-string",p[2])
+    elif(p[2]== "ID"):
+        p[0] =("print-ID",p[2])
 
 
 def p_error(p):
