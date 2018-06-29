@@ -5,18 +5,16 @@ from ply.yacc import yacc
 
 
 def p_statment_assign(p):
-    '''assign : ID EQUALS expression COLON
-              | ID EQUALS factor COLON'''
-    p[0] = p[2]
+    '''assign : ID EQUALS factor COLON'''
+
+    p[0] = p[3]
 
 def p_lessthan(p):
-    '''expression : ID LESSTHAN expression
-                  | ID LESSTHAN factor'''
+    '''expression : ID LESSTHAN factor'''
     p[0] = p[1] < p[3]
 
 def p_ifstatement(p):
-    '''if : IF OPENINGPARA expression CLOSINGPARA ELSE
-          | IF OPENINGPARA factor CLOSINGPARA ELSE'''
+    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA ELSE'''""
     p[0] = p[3]
 
 
@@ -29,6 +27,7 @@ def p_expression_group(p):
 def p_factor_number(p):
     '''factor : NUMBER'''
     p[0] = p[1]
+
 
 
 def p_expression_ID(p):
@@ -48,6 +47,16 @@ def p_print(p):
 def p_error(p):
     print("parser error")
 
+toy_Language = """
+        a = 20;
+        if(a < 10){
+            print "wow a is small";
+            }
+        else{
+            print a;
+            }
+        """
 
 
-yacc()
+ya = yacc()
+ya.parse("a = 20;")
