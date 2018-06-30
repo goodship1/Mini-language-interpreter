@@ -14,17 +14,17 @@ def p_assign_string(p):
 
 def p_lessthan(p):
     '''expression : ID LESSTHAN factor'''
-    p[0] = p[1] < p[3]
+    p[0] = ("lessthan-expression",p[3])
 
 def p_ifstatement(p):
-    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA ELSE'''""
-    p[0] = ("lessthan-expression",p[5])
+    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE OPENBRACE PRINT ID COLON CLOSINGBRACE
+    p[0] = ("if-statement",p[5])
 
 
 def p_expression_group(p):
-    '''expression : OPENBRACE expression CLOSINGBRACE
-                  | OPENBRACE factor CLOSINGBRACE'''
-    p[0] = ("group", p[2])
+    '''expression : OPENINGPARA expression CLOSINGPARA
+                  | OPENINGPARA factor CLOSINGPARA'''
+    p[0] = ("group-expression", p[2])
 
 
 def p_factor_number(p):
@@ -58,12 +58,9 @@ toy_Language = """
         if(a < 10){
             print "wow a is small";
             }
-        else{
-            print a;
-            }
         """
 
 
 ya = yacc()
-x = ya.parse("x = hello;")
+x = ya.parse(toy_Language)
 print(x)
