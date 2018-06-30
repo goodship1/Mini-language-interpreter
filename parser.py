@@ -10,21 +10,27 @@ def p_assign_factor(p):
     p[0] = ('assignment-factor',p[3])
 
 def p_assign_string(p):
-    pass
+    '''assign : ID EQUALS STRING COLON'''
+    p[0] = ("assign-string",p[3])
+
 
 def p_lessthan(p):
     '''expression : ID LESSTHAN factor'''
     p[0] = ("lessthan-expression",p[3])
 
-def p_ifstatement(p):
-    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE OPENBRACE PRINT ID COLON CLOSINGBRACE
-    p[0] = ("if-statement",p[5])
+def p_if_statement(p):
+    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE OPENBRACE PRINT ID COLON CLOSINGBRACE'''
+    p[0] = ("if-else-statement",p[5])
 
 
 def p_expression_group(p):
-    '''expression : OPENINGPARA expression CLOSINGPARA
-                  | OPENINGPARA factor CLOSINGPARA'''
+    '''expression : OPENINGPARA expression CLOSINGPARA'''
     p[0] = ("group-expression", p[2])
+
+
+def p_group_lessthan(p):
+    '''expression : OPENINGPARA ID LESSTHAN factor CLOSINGPARA'''
+    p[0] =("group-lessthan-factor",p[4])
 
 
 def p_factor_number(p):
