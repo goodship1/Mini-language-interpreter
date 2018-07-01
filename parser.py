@@ -51,7 +51,7 @@ def p_print(p):
     '''expression : PRINT STRING COLON
                  | PRINT ID COLON'''
     if(p[2]== "STRING"):
-        p[0] = ("print-string",p[2])
+        p[0] = ("print-STRING",p[2])
     elif(p[2]== "ID"):
         p[0] =("print-ID",p[2])
 
@@ -67,6 +67,6 @@ toy_Language = """
         """
 
 
-ya = yacc()
-x = ya.parse(toy_Language)
-print(x)
+myYacc = yacc()
+parser = myYacc.parse("if(a<10)")
+print(parser)
