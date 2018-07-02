@@ -62,8 +62,23 @@ def p_error(p):
     print("parser error")
 
 
+
+
 def factor_Assign_test():
-    pass
+    parser = yacc()
+    test_Factor = parser.parse("a=20;")
+    parser_Result = "('assignment-factor', ('number-factor', '20'))"
+    assert(test_Factor)==parser_Result
+
+
+
+def error_Test():
+    parser = yacc()
+    parser_Error = parser.parse("a=1")
+    test_Error = "parser error"
+    assert(parser_Error) == test_Error
+
+
 
 
 def string_Assign_test():
@@ -85,7 +100,5 @@ def lessthan_Factor_test():
     pass
 
 
-def group_Test():	
+def group_Test():
     pass
-
- 

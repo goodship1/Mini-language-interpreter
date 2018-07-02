@@ -58,8 +58,3 @@ def p_print(p):
 
 def p_error(p):
     print("parser error")
-
-
-myYacc = yacc()
-parser = myYacc.parse("a")
-print(parser)
