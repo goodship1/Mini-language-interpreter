@@ -59,14 +59,7 @@ def p_print(p):
 def p_error(p):
     print("parser error")
 
-toy_Language = """
-        a = 20;
-        if(a < 10){
-            print "wow a is small";
-            }
-        """
-
 
 myYacc = yacc()
-parser = myYacc.parse("if(a<10)")
+parser = myYacc.parse("a")
 print(parser)
