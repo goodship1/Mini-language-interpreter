@@ -3,19 +3,19 @@ from lexer import tokens
 from ply.yacc import yacc
 
 
-
+variables = dict()
 def p_assign_factor(p):
     '''assign : ID EQUALS factor COLON'''
 
-    p[0] = ('assignment-factor',p[3])
+    p[0] = ('assignment-factor',p[1],p[2],p[3])
 
 def p_assign_string(p):
     '''assign : ID EQUALS STRING COLON'''
     p[0] = ("assign-string",p[3])
 
 
-def p_lessthan(p):
-    '''expression : ID LESSTHAN factor'''
+def p_expression_lessthan(p):
+    'expression : ID LESSTHAN expression'
     p[0] = ("lessthan-expression",p[3])
 
 def p_if_statement(p):
@@ -29,7 +29,7 @@ def p_expression_group(p):
 
 
 def p_group_lessthan(p):
-    '''expression : OPENINGPARA ID LESSTHAN factor CLOSINGPARA'''
+    '''expression : OPENINGPARA ID LESSTHAN expression CLOSINGPARA'''
     p[0] =("group-lessthan-factor",p[4])
 
 
@@ -44,17 +44,19 @@ def p_expression_ID(p):
     p[0] = ("id-expression",p[1])
 
 def p_expression_string(p):
-    '''expression : STRING'''
+    'expression : STRING'
     p[0]  = ("string-expression",p[1])
 
 def p_print(p):
-    '''expression : PRINT STRING COLON
-                 | PRINT ID COLON'''
-    if(p[2]== "STRING"):
-        p[0] = ("print-STRING",p[2])
-    elif(p[2]== "ID"):
-        p[0] =("print-ID",p[2])
+    'print : PRINT ID COLON'
+    p[0] = ("print-ID",p[2])
 
 
 def p_error(p):
     print("parser error")
+
+
+
+par = yacc()
+result = par.parse("(a<10)")
+print(result)
