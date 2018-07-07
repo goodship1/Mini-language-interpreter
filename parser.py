@@ -4,33 +4,19 @@ from ply.yacc import yacc
 
 
 variables = dict()
-def p_assign_factor(p):
-    '''assign : ID EQUALS factor COLON'''
 
+def p_assign_factor(p):
+    '''assign : ID EQUALS factor'''
     p[0] = ('assignment-factor',p[1],p[2],p[3])
+    variables[p[1]] = p[3]
 
 def p_assign_string(p):
     '''assign : ID EQUALS STRING COLON'''
     p[0] = ("assign-string",p[3])
 
-
-def p_expression_lessthan(p):
-    'expression : ID LESSTHAN expression'
-    p[0] = ("lessthan-expression",p[3])
-
-def p_if_statement(p):
-    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE OPENBRACE PRINT ID COLON CLOSINGBRACE'''
-    p[0] = ("if-else-statement",p[5])
-
-
-def p_expression_group(p):
-    '''expression : OPENINGPARA expression CLOSINGPARA'''
-    p[0] = ("group-expression", p[2])
-
-
-def p_group_lessthan(p):
-    '''expression : OPENINGPARA ID LESSTHAN expression CLOSINGPARA'''
-    p[0] =("group-lessthan-factor",p[4])
+def p_expression(p):
+    'expression : NUMBER LESSTHAN NUMBER'
+    p[0] = ('less-than',p[1]<p[3])
 
 
 def p_factor_number(p):
@@ -58,5 +44,5 @@ def p_error(p):
 
 
 par = yacc()
-result = par.parse("(a<10)")
+result = par.parse("1<20")
 print(result)
