@@ -15,14 +15,17 @@ def p_assign_string(p):
     p[0] = ("assign-string",p[3])
 
 def p_expression(p):
-    'expression : NUMBER LESSTHAN NUMBER'
-    p[0] = ('less-than',p[1]<p[3])
+    'expression : ID LESSTHAN expression'
+    p[0] = ('less-than', p[1]<p[3])
 
 
 def p_factor_number(p):
     '''factor : NUMBER'''
     p[0] = ("number-factor",p[1])
 
+def p_expression_group(p):
+    'group : OPENINGPARA expression CLOSINGPARA'
+    p[0] =('group', p[1])
 
 
 def p_expression_ID(p):
@@ -43,6 +46,6 @@ def p_error(p):
 
 
 
-par = yacc()
-result = par.parse("1<20")
+par=yacc()
+result = par.parse("(100)")
 print(result)
