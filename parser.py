@@ -23,9 +23,13 @@ def p_factor_number(p):
     '''factor : NUMBER'''
     p[0] = ("number-factor",p[1])
 
-def p_expression_group(p):
+def p_group(p):
     'group : OPENINGPARA expression CLOSINGPARA'
     p[0] =('group', p[1])
+
+def p_if_statement(p):
+    'if : IF group OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE'
+    p[0] =('if-statement'p[4])
 
 
 def p_expression_ID(p):
