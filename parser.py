@@ -29,7 +29,7 @@ def p_group(p):
 
 def p_if_statement(p):
     'if : IF group OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE'
-    p[0] =('if-statement'p[4])
+    p[0] =('if-statement',p[4])
 
 
 def p_expression_ID(p):
@@ -41,8 +41,12 @@ def p_expression_string(p):
     p[0]  = ("string-expression",p[1])
 
 def p_print(p):
-    'print : PRINT ID COLON'
-    p[0] = ("print-ID",p[2])
+    '''print : PRINT ID COLON
+           | PRINT STRING COLON'''
+    if(p[1]=='ID'):
+        p[0] = ("print-ID",p[2])
+    else:
+        p[0] = ("print-string",p[2])
 
 
 def p_error(p):
