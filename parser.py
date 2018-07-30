@@ -28,9 +28,12 @@ def p_group(p):
     p[0] =('group', p[1])
 
 def p_if_statement(p):
-    'if : IF group OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE'
-    p[0] =('if-statement',p[4])
-
+    '''if : IF group OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE
+        | IF group OPENBRACE PRINT ID COLON CLOSINGBRACE ELSE'''
+    if(p[5]=="STRING"):
+        p[0] = ("if-statement-string",p[5])
+    elif(p[5]=="ID"):
+        p[0]=("if-statment-id",p[5])
 
 def p_expression_ID(p):
     ''' expression : ID'''
