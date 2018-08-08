@@ -36,7 +36,7 @@ def t_ID(t):
 
 
 def t_TRUE(t):
-    r'False'
+    r'True'
     return t
 
 
