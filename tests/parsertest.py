@@ -82,23 +82,16 @@ def error_Test():
 
 
 def string_Assign_test():
-    pass
-
-def number_Test():
-    pass
-
-
-def string_Test():
-    pass
-
-
-def error_Test():
+    parser = yacc()
+    test_String_assign = "a = 'hello';"
+    parser_Result = "('assignment-string',('string','hello'))"
+    assert(test_String_assign)==parser_Result
+                                
+                                
+                       
+ def lessthan_Statement_test():
     pass
 
 
-def lessthan_Factor_test():
-    pass
-
-
-def group_Test():
+def if_Statement_test():
     pass
