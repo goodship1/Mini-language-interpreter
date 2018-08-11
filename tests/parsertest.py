@@ -1,6 +1,4 @@
 import pytest
-
-
 from lexer import tokens
 from ply.yacc import yacc
 
@@ -83,15 +81,44 @@ def error_Test():
 
 def string_Assign_test():
     parser = yacc()
-    test_String_assign = "a = 'hello';"
+    test_String_assign = parser.parse("a = 'hello';")
     parser_Result = "('assignment-string',('string','hello'))"
     assert(test_String_assign)==parser_Result
-                                
-                                
-                       
+
+
+
  def lessthan_Statement_test():
-    pass
+     parser = yacc()
+     test_Lessthan = parser.parse("a<10")
+     parser_Result ="('id-lessthan',('id','a'),('number','10'))"
+     assert(parser_Result)==test_Lessthan
+
 
 
 def if_Statement_test():
-    pass
+    parser = yacc()
+    test_If_statement = parser.parse("""if(a<10){
+    print wow a is small;
+    }
+    else{
+
+        print a;
+    }""")
+    parser_Result ="('if-statement',('id','a'),('lessthan','number','10'),('print','string'))
+    assert(parser_Result)==test_If_statement
+
+
+
+def print_Statement_test_String():
+    parser = yacc()
+    test_Print_string = parser.parse("print 'hello world';")
+    parser_result = "('print-STRING',('STRING','helloworld')"
+    assert(parser_Result)==test
+
+
+def print_Statement_test_Id():
+    parser = yacc()
+    test_Print_Id = parser.parse("print a;")
+    parser_Result ="('print-ID',('ID','a'))"
+    assert(parser_Result)==test_Print_Id
+    
