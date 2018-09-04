@@ -51,6 +51,9 @@ def p_print(p):
     else:
         p[0] = ("print-string",p[2])
 
+def p_block(p):
+    pass
+
 
 def p_error(p):
     print("parser error")
