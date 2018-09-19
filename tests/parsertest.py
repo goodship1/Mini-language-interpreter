@@ -93,7 +93,12 @@ def string_Assign_test():
      parser_Result ="('id-lessthan',('id','a'),('number','10'))"
      assert(parser_Result)==test_Lessthan
 
-
+def error_test():
+    parser = yacc()
+    test_Error = parser.parse("aaaaaaa")
+    parser_Result = "("parser error")"
+    assert(parser_Result)==test_Error
+    
 
 def if_Statement_test():
     parser = yacc()
