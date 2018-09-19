@@ -60,6 +60,3 @@ def p_error(p):
 
 
 
-par=yacc()
-result = par.parse("(100)")
-print(result)
