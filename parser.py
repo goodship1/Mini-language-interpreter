@@ -15,7 +15,7 @@ def p_assign_string(p):
     p[0] = ("assign-string",p[3])
 
 def p_expression(p):
-    'expression : ID LESSTHAN FACTOR'
+    'expression : ID LESSTHAN factor'
     p[0] = ('less-than', p[1]<p[3])
 
 
