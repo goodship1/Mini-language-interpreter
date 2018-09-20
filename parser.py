@@ -6,13 +6,12 @@ from ply.yacc import yacc
 variables = dict()
 
 def p_assign_factor(p):
-    '''assign : ID EQUALS factor'''
-    p[0] = ('assignment-factor',p[1],p[2],p[3])
+    '''assign : ID EQUALS factor
+              | ID EQUALS STRING COLON'''
+    p[0] = ('assignment',p[1],p[2],p[3])
     variables[p[1]] = p[3]
 
-def p_assign_string(p):
-    '''assign : ID EQUALS STRING COLON'''
-    p[0] = ("assign-string",p[3])
+
 
 def p_expression(p):
     'expression : ID LESSTHAN factor'
