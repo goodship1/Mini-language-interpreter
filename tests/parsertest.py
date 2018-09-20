@@ -101,16 +101,14 @@ def error_test():
     
 
 def if_Statement_test():
-    parser = yacc()
-    test_If_statement = parser.parse("""if(a<10){
-    print wow a is small;
-    }
-    else{
+    pass
 
-        print a;
-    }""")
-    parser_Result ="('if-statement',('id','a'),('lessthan','number','10'),('print','string'))
-    assert(parser_Result)==test_If_statement
+
+
+def else_Statement_test():
+    pass
+
+
 
 
 def block_test():
