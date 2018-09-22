@@ -27,10 +27,14 @@ def p_group(p):
     p[0] =('group', p[1])
 
 def p_if_statement(p):
-    pass
+    '''if : IF group OPENBRACE print CLOSEBRACE'''
+       p[0] = ("if-statement",p[4])
+
 
 def p_else_statement(p)
-    pass
+    '''else : ELSE OPENBRACE print CLOSEBRACE'''
+       p[0] = ("else-statement",p[3])
+
 
 def p_expression_ID(p):
     ''' expression : ID'''

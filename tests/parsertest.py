@@ -19,8 +19,13 @@ def p_lessthan(p):
     p[0] = ("lessthan-expression",p[3])
 
 def p_if_statement(p):
-    '''if : IF OPENINGPARA ID LESSTHAN factor CLOSINGPARA OPENBRACE PRINT STRING COLON CLOSINGBRACE ELSE OPENBRACE PRINT ID COLON CLOSINGBRACE'''
-    p[0] = ("if-else-statement",p[5])
+    '''if : IF group OPENBRACE print CLOSEBRACE'''
+    p[0] =("if-statement",p[4])
+
+
+def p_else_statement(p):
+    '''else : ELSE OPENBRACE print CLOSEBRACE'''
+   p[0] = ("else-statement",p[3])
 
 
 def p_expression_group(p):
@@ -36,6 +41,8 @@ def p_group_lessthan(p):
 def p_factor_number(p):
     '''factor : NUMBER'''
     p[0] = ("number-factor",p[1])
+
+
 
 
 
@@ -113,6 +120,17 @@ def else_Statement_test():
 
 def block_test():
     pass
+
+
+
+
+def true_Statement_test():
+    pass
+
+
+def false_Statement_test():
+    pass
+
 
 
 
