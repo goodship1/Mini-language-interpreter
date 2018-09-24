@@ -24,16 +24,15 @@ def p_factor_number(p):
 
 def p_group(p):
     'group : OPENINGPARA expression CLOSINGPARA'
-    p[0] =('group', p[1])
+    p[0] = ('group', p[1])
 
 def p_if_statement(p):
-    '''if : IF group OPENBRACE print CLOSEBRACE'''
-       p[0] = ("if-statement",p[4])
+    '''if:IF group OPENBRACE print CLOSEBRACE'''
+    p[0] =("if-statement",p[4])
 
-
-def p_else_statement(p)
+def p_else_statement(p):
     '''else : ELSE OPENBRACE print CLOSEBRACE'''
-       p[0] = ("else-statement",p[3])
+    p[0] = ("else-statement",p[3])
 
 
 def p_expression_ID(p):
@@ -58,6 +57,3 @@ def p_block(p):
 
 def p_error(p):
     print("parser error")
-
-
-
