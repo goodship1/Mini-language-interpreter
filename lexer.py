@@ -53,7 +53,8 @@ def t_error(t):
     """error handling of lexer"""
     t.lexer.skip(1)
 
-
+def t_eof(t):
+    pass
 
 
 def t_NEWLINE(t):
