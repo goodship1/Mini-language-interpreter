@@ -30,7 +30,7 @@ t_ignore = "\t"
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    if t.value in reserved:
+    if t.value in  reserved:
        t.type = reserved[t.value]
     return t
 
