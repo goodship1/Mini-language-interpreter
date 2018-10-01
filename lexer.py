@@ -7,8 +7,8 @@ import re
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ["ID","EQUALS","LESSTHAN",
-            "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",""'NEWLINE'
+            "OPENINGPARA","CLOSINGPARA","OPENINGBRACE","CLOSINGBRACE",
+            "STRING","NUMBER","COLON",'NEWLINE'
             ]+list(reserved.values())
 
 
@@ -19,7 +19,7 @@ t_EQUALS = r'='
 t_LESSTHAN = r'\<'
 t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
-t_OPENBRACE = r'{'
+t_OPENINGBRACE = r'{'
 t_CLOSINGBRACE= r'}'
 t_STRING = r'(\".*\"|\'.*\')'
 t_ignore = "\t"
@@ -62,4 +62,5 @@ def t_NEWLINE(t):
     t.lexer.lineno+=len(t.value)
     return t
 
-lex.lex()#builds are lexer with token
+
+lex.lex()#builds are lexer

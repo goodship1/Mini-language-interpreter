@@ -27,11 +27,11 @@ def p_group(p):
     p[0] = ('group', p[1])
 
 def p_if_statement(p):
-    '''if:IF group OPENBRACE print CLOSEBRACE'''
+    '''if : IF group OPENINGBRACE print CLOSINGEBRACE'''
     p[0] =("if-statement",p[4])
 
 def p_else_statement(p):
-    '''else : ELSE OPENBRACE print CLOSEBRACE'''
+    '''else : ELSE OPENINGBRACE print CLOSEINGBRACE'''
     p[0] = ("else-statement",p[3])
 
 
@@ -57,5 +57,4 @@ def p_error(p):
     print("parser error")
 
 
-
-parse = yacc()
+parser = yacc("a=20;")
