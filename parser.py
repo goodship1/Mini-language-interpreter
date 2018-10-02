@@ -43,12 +43,10 @@ def p_if(p):
 
 def p_print(p):
     'print : PRINT expression COLON'
+    p[0] = ("print-statement",p[2])
     print(p[2])
 
 def p_error(p):
     print("parser error")
 
 parser = yacc()
-
-y = parser.parse("")
-print(y)
