@@ -37,7 +37,7 @@ def p_expression_lessthan(p):
 
 
 def p_if(p):
-    'if : IF group OPENINGBRACE print CLOSINGBRACE '
+    'if : IF expression OPENINGBRACE print CLOSINGBRACE '
     p[0] = ("if-statement",p[4])
 
 
