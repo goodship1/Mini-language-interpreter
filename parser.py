@@ -25,8 +25,8 @@ def p_expression_factor(p):
     p[0]=("number",p[1])
 
 
-def p_group(p):
-    'group : OPENINGPARA expression CLOSINGPARA'
+def p_expression_group(p):
+    'expression : OPENINGPARA expression CLOSINGPARA'
     p[0]=("group",p[2])
 
 
@@ -37,9 +37,13 @@ def p_expression_lessthan(p):
 
 
 def p_if(p):
-    'if : IF group OPENINGBRACE print CLOSINGBRACE ELSE OPENINGBRACE print CLOSINGBRACE'
+    'if : IF group OPENINGBRACE print CLOSINGBRACE '
     p[0] = ("if-statement",p[4])
 
+
+def p_else(p):
+    'else : ELSE OPENINGBRACE print CLOSINGBRACE'
+    p[0] =("else-statement",p[3])
 
 def p_print(p):
     'print : PRINT expression COLON'
