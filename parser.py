@@ -31,7 +31,7 @@ def p_expression_group(p):
 
 
 def p_expression_lessthan(p):
-    '''expression : expression LESSTHAN expression'''
+    '''expression : expression LESSTHAN expression '''
     p[0] = ("less-than",p[1]<p[3])
 
 
@@ -52,5 +52,3 @@ def p_print(p):
 
 def p_error(p):
     print("parser error")
-
-parser = yacc()
