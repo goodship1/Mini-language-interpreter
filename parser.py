@@ -34,6 +34,14 @@ def p_expression_lessthan(p):
     '''expression : expression LESSTHAN expression '''
     p[0] = ("less-than",p[1]<p[3])
 
+def p_expression_minus(p):
+    '''expression : expression MINUS expression'''
+    p[0] =("subtraction",p[1]-p[3])
+
+
+def p_expression_times(p):
+    '''expression : epxression TIMES expression'''
+    p[0] = ("mutiplication",p[1]*p[3])
 
 
 def p_if(p):
