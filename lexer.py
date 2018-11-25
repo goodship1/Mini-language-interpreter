@@ -8,7 +8,7 @@ reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ["ID","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENINGBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",'NEWLINE'
+            "STRING","NUMBER","COLON",'NEWLINE',"MINUS","TIMES"
             ]+list(reserved.values())
 
 
@@ -16,6 +16,8 @@ tokens = ["ID","EQUALS","LESSTHAN",
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
+t_MINUS = r'-'
+t_TIMES = r'*'
 t_LESSTHAN = r'\<'
 t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
