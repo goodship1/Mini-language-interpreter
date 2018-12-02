@@ -35,12 +35,12 @@ def p_expression_lessthan(p):
     p[0] = ("less-than",p[1]<p[3])
 
 def p_expression_minus(p):
-    '''expression : expression MINUS expression'''
+    '''expression : expression MINUS expression COLON'''
     p[0] =("subtraction",p[1]-p[3])
 
 
 def p_expression_times(p):
-    '''expression : epxression TIMES expression'''
+    '''expression : epxression TIMES expression COLON'''
     p[0] = ("mutiplication",p[1]*p[3])
 
 
