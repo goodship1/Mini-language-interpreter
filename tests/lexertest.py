@@ -30,7 +30,7 @@ reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ['ID',"PLUS","MINUS","EQUALS","LESSTHAN",
             "OPENINGPARA","CLOSINGPARA","OPENBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",""'NEWLINE'
+            "STRING","NUMBER","COLON",""'NEWLINE','plus','minus','times'
             ]+list(reserved.values())
 
 
@@ -39,6 +39,9 @@ t_PRINT = "print"
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
+t_plus = r'+'
+t_minus = r'-'
+t_times = r'*'
 t_LESSTHAN = r'\<'
 t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
