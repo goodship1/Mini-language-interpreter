@@ -40,9 +40,14 @@ def p_expression_minus(p):
 
 
 def p_expression_times(p):
-    '''expression : epxression TIMES expression COLON'''
+    '''expression : expression TIMES expression COLON'''
     p[0] = ("mutiplication",p[1]*p[3])
 
+
+def p_expression_add(p):
+    '''expression : expression ADD expression COLON'''
+    p[0] = ("add",p[1]+p[3])
+    
 
 def p_if(p):
     'if : IF expression OPENINGBRACE print CLOSINGBRACE '
