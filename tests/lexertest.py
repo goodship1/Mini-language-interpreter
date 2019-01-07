@@ -19,7 +19,7 @@ test_Reserved_words = ["if","print","else"]
 test_Assignment = "a = hello"
 test_Name = "GOODSHIP1"
 test_Braces = ['{',"}","(",")"]
-test_Operations = ["=","<"]
+test_Operations = ["=","<","+","-","*"]
 test_colon = ';'
 
 tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment,test_Name]
@@ -39,9 +39,9 @@ t_PRINT = "print"
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
-t_plus = r'+'
-t_minus = r'-'
-t_times = r'*'
+t_PLUS = r'+'
+t_MINUS = r'-'
+t_TIMES = r'*'
 t_LESSTHAN = r'\<'
 t_OPENINGPARA= r'\('
 t_CLOSINGPARA= r'\)'
@@ -95,7 +95,7 @@ while True:
 """ tests for more advance lexer rules"""
 
 
-def testing_tNUMBER():
+def testing_NUMBER():
     """testing of t_number"""
     lex.input(tests[1])
     tokens = list()
@@ -107,7 +107,7 @@ def testing_tNUMBER():
     assert("LexToken(NUMBER,'200',1,0)") == str(tokens[0])
 
 
-def testing_tSTRING():
+def testing_STRING():
     """testing of t_number"""
     lex.input(tests[0])
     tokens = list()
@@ -121,7 +121,7 @@ def testing_tSTRING():
 
 
 
-def testing_tNAME():
+def testing_NAME():
     """testing of t_NAME"""
     lex.input(tests[5])
     tokens = list()
@@ -231,6 +231,39 @@ def testing_COLON():
 
 
 
+
+def testing_PLUS():
+        lex.input(test_Operations[2])
+        tokens = list()
+        while True:
+                tok = lex.token()
+                tokens.append(tok)
+                if not tok:
+                        break
+        assert("LexToken(PLUS,'+',1,0)") == str(tokens[0])
+
+
+def testing_MINUS():
+        lex.input(test_Operations[3])
+        tokens = list()
+        while True:
+                tok = lex.token()
+                tokens.append(tok)
+                if not tok:
+                        break
+       assert("LexToken(Minus ,'-',1,0)") == str(tokens[0])
+
+def testing_TIMES():
+        lex.input(test_Operations[4])
+        tokens.list()
+        while True:
+                tok = lex.token()
+                tokens.append(tok)
+                if not tok:
+                        break
+        assert("LexToken(Times,'*',1,0)") == str(tokens[4])
+        
+        
 
 
 def testing_ELSE():
