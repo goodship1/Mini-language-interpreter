@@ -42,9 +42,22 @@ def p_factor_number(p):
     '''factor : NUMBER'''
     p[0] = ("number-factor",p[1])
 
+    
 
 
+def p_expression_add(p):
+    '''expression : expression PLUS expression COLON'''
+    p[0] = ("add",p[1]+p[3])
 
+
+def p_expression_minus(p):
+    '''expression : expression MINUS expression COLON'''
+    p[0] = ("subtract",p[1]-p[3])
+
+def p_expression_times(p):
+    '''expression : expression TIMES expression COLON'''
+    p[0] = ("mutiplication",p[1]*p[3])
+    
 
 def p_expression_ID(p):
     ''' expression : ID'''
@@ -83,7 +96,24 @@ def error_Test():
     test_Error = "parser error"
     assert(parser_Error) == test_Error
 
+def add_Operation_test():
+    parser = yacc()
+    plus_Operation = parser.parse("1+1")
+    parser_Result = "('add',(number-factor','1'),(number-factor,'1'))"
+    assert(plus_Operation)==parser_Result
 
+def minus_Operation_test():
+    parser = yacc()
+    minus_Opeartion =  parser.parse('1-1')
+    parser_Result  = "('subtraction',(number-factor','1'),(number-factor,'1'))"
+    assert(minus_Opeartion) == parser_Result
+
+    
+def times_Opeartion_test():
+    parser = yacc()
+    times_Operation = parse.parser('1*1')
+    parser_Result = "('multiplcation',(number-factor','1'),(number-factor,'1'))"
+    assert(times_Operation) == parser_Result
 
 
 def string_Assign_test():
@@ -106,30 +136,6 @@ def error_test():
     parser_Result = "("parser error")"
     assert(parser_Result)==test_Error
     
-
-def if_Statement_test():
-    pass
-
-
-
-def else_Statement_test():
-    pass
-
-
-
-
-def block_test():
-    pass
-
-
-
-
-def true_Statement_test():
-    pass
-
-
-def false_Statement_test():
-    pass
 
 
 
