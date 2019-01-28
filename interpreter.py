@@ -5,3 +5,7 @@ class interpreter(object):
 
 	def __init__(self,text,line_pos):
 		pass
+	
+	
+	def run(self):
+		pass
