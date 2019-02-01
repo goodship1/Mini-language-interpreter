@@ -55,7 +55,7 @@ def p_if(p):
 
 
 def p_else(p):
-    'else : ELSE OPENINGBRACE print CLOSINGBRACE'
+    'else : ELSE OPENINGBRACE print expression CLOSINGBRACE'
     p[0] =("else-statement",p[3])
 
 def p_print(p):
