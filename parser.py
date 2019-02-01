@@ -65,3 +65,5 @@ def p_print(p):
 
 def p_error(p):
     print("parser error")
+
+yacc.yacc()
