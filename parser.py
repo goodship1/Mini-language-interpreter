@@ -1,7 +1,7 @@
 
 from lexer import tokens
 from ply.yacc import yacc
-
+import AST
 
 variables = dict()
 
