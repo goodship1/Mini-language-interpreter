@@ -1,3 +1,7 @@
+class Node(object):
+    pass
+
+
 
 class Number(object):
     
