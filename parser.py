@@ -50,12 +50,12 @@ def p_expression_add(p):
     
 
 def p_if(p):
-    'if : IF expression OPENINGBRACE print expression CLOSINGBRACE '
+    'if : IF expression OPENINGBRACE print expression CLOSINGBRACE ELSE'
     p[0] = ("if-statement",p[5])
 
 
 def p_else(p):
-    'else : ELSE OPENINGBRACE print expression CLOSINGBRACE'
+    'else : ELSE OPENINGBRACE  expression CLOSINGBRACE'
     p[0] =("else-statement",p[3])
 
 def p_print(p):
