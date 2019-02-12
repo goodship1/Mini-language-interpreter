@@ -45,25 +45,21 @@ def p_expression_times(p):
 
 
 def p_expression_add(p):
-    '''expression : expression ADD expression COLON'''
+    '''expression : expression PLUS expression COLON'''
     p[0] = ("add",p[1]+p[3])
     
 
-def p_if(p):
-    'if : IF expression OPENINGBRACE print expression CLOSINGBRACE ELSE'
-    p[0] = ("if-statement",p[5])
+def if_statement(p):
+	'''expression : IF expression OPENINGBRACE PRINT expression COLON expression CLOSINGBRACE ELSE'''
+	p[0] =('if-statement', p[5])
+	
 
-
-def p_else(p):
-    'else : ELSE OPENINGBRACE  expression CLOSINGBRACE'
-    p[0] =("else-statement",p[3])
-
-def p_print(p):
-    'print : PRINT expression COLON'
+def p_print_statement(p):
+    '''expression : PRINT expression COLON'''
     p[0] = ("print-statement",p[2])
     print(p[2])
 
 def p_error(p):
     print("parser error")
 
-yacc.yacc()
+yacc()
