@@ -1,4 +1,3 @@
-ls
 from lexer import tokens
 from ply.yacc import yacc
 import AST
@@ -6,31 +5,37 @@ import AST
 variables = dict()
 
 def p_assign(p):
-    '''assign : ID EQUALS expression COLON'''
+    '''expression : ID EQUALS expression COLON'''
     p[0] = ('assignment',p[1],p[2],p[3])
     variables[p[1]] = p[3]
 
 
 def p_term(p):
-	'''term : ID + factor COLON
-			| ID - factor COLON
-			| factor - factor COLON
-			| expression + expression COLON 
-			'''
-	pass
+	'''expression : expression + expression COLON
+		      |expression - expression COLON
+		      |expression
+		      '''
+	if(p[2] == '+'):
+		p[0] = ("plus" , p[1] + p[3])
+	if(p[2] == '-'):
+		p[0] = ("minus",p[1] - p[3])
+	
+	
+	
+		
 
 
 
-def p_factor(p):
-	'''factor : NUMBER'''
+def p_Factor(p):
+	'''expression : NUMBER'''
 	p[0] = p[1]
 
 
-def p_Id(p):
+def p_ID(p):
 	'''expression : ID'''
 	p[0] = p[1]
 
 def p_lessthan(p):
-	'''expression : ID LESSTHAN factor COLON'''
+	'''expression : expression LESSTHAN expression COLON'''
 	p[0] = ("less-than" p[1] < p[3])
 	
