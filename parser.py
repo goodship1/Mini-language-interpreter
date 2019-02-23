@@ -22,8 +22,6 @@ def p_term(p):
 	
 	
 	
-		
-
 
 
 def p_Factor(p):
