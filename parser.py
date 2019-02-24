@@ -31,19 +31,23 @@ def p_String(p):
 	
 def p_Id(p):
 	'''expression : ID'''
+	#needs to check if key word
 	p[0] = p[1]
 
 def p_lessthan(p):
 	'''expression : expression LESSTHAN expression COLON'''
 	p[0] = ("less-than", p[1] < p[3])
 
-
+def print_statement(p):
+	'''expression : expression COLON '''
+	print p[1]
+	
+def if_statment(p):
+	pass
+	
 def p_error(p):
 	print "parser error"
 
 
 x = yacc()
-print(x.parse("x = 20;"))
-
-
 
