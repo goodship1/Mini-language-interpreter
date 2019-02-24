@@ -1,23 +1,24 @@
 from lexer import tokens
 from ply.yacc import yacc
-import AST
 
 symbol_table = dict()
 
 def p_assign(p):
-    '''expression : ID EQUALS expression COLON'''
+    '''expression : expression EQUALS expression COLON
+				  | expression EQUALS NUMBER COLON
+				  | expression EQUALS STRING COLON'''
     p[0] = ('assignment',p[1],p[2],p[3])
     symbol_table[p[1]] = p[3]
 
 
 def p_add(p):
 	'''expression : expression PLUS expression COLON'''
-	p[0] = ("add-expression",p[1]+p[3])
+	p[0] =  ("add" ,p[1],p[2],p[3])
 
 
 def p_minus(p):
 	'''expression : expression MINUS expression COLON'''
-	p[0] =("minus-expression",p[1]-p[3])
+	p[0] = ("minus-expression", p[1] , p[2] ,p[3])
 
 
 def p_Factor(p):
@@ -38,12 +39,14 @@ def p_lessthan(p):
 	'''expression : expression LESSTHAN expression COLON'''
 	p[0] = ("less-than", p[1] < p[3])
 
-def print_statement(p):
-	'''expression : expression COLON '''
-	print p[1]
+def p_print(p):
+	'''expression : PRINT expression COLON '''
+	p[0] = ("print-statment", p[2])
+	print(p[2])
 	
 def if_statment(p):
 	pass
+	
 	
 def p_error(p):
 	print "parser error"
@@ -51,3 +54,7 @@ def p_error(p):
 
 x = yacc()
 
+test_parse = '''a =  "gggg";'''
+
+print(test_parse)
+print(x.parse(test_parse))

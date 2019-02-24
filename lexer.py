@@ -7,8 +7,7 @@ import re
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ["ID","EQUALS","LESSTHAN",
-            "OPENINGBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",'NEWLINE',"MINUS",'PLUS'
+            "STRING","NUMBER","COLON","MINUS",'PLUS'
             ]+list(reserved.values())
 
 
@@ -59,7 +58,7 @@ def t_NEWLINE(t):
     """newline regular expression for token"""
     r'\n+'
     t.lexer.lineno+=len(t.value)
-    return t
+    print "new-line"
 
 
 lex.lex()#builds are lexer
