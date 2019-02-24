@@ -20,9 +20,6 @@ def p_term(p):
 	if(p[2] == '-'):
 		p[0] = ("minus",p[1] - p[3])
 	
-	
-	
-
 
 def p_Factor(p):
 	'''expression : NUMBER'''
