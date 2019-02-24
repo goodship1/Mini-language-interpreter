@@ -7,8 +7,8 @@ import re
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ["ID","EQUALS","LESSTHAN",
-            "OPENINGPARA","CLOSINGPARA","OPENINGBRACE","CLOSINGBRACE",
-            "STRING","NUMBER","COLON",'NEWLINE',"MINUS","TIMES",'PLUS'
+            "OPENINGBRACE","CLOSINGBRACE",
+            "STRING","NUMBER","COLON",'NEWLINE',"MINUS",'PLUS'
             ]+list(reserved.values())
 
 
@@ -17,13 +17,8 @@ t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
 t_MINUS = r'-'
-t_TIMES = r'\*'
 t_PLUS = r'\+'
 t_LESSTHAN = r'\<'
-t_OPENINGPARA= r'\('
-t_CLOSINGPARA= r'\)'
-t_OPENINGBRACE = r'{'
-t_CLOSINGBRACE= r'}'
 t_STRING = r'(\".*\"|\'.*\')'
 t_ignore = "\t"
 
