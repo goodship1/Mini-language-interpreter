@@ -4,20 +4,22 @@ from ply.yacc import yacc
 symbol_table = dict()
 
 def p_assign(p):
-    '''expression : expression EQUALS expression COLON
-				  | expression EQUALS NUMBER COLON
-				  | expression EQUALS STRING COLON'''
+    '''expression : ID EQUALS expression COLON
+				  | ID EQUALS NUMBER COLON
+				  | ID EQUALS STRING COLON'''
     p[0] = ('assignment',p[1],p[2],p[3])
     symbol_table[p[1]] = p[3]
 
 
 def p_add(p):
-	'''expression : expression PLUS expression COLON'''
+	'''expression : ID PLUS NUMBER COLON
+				  | NUMBER PLUS NUMBER COLON'''
 	p[0] =  ("add" ,p[1],p[2],p[3])
 
 
 def p_minus(p):
-	'''expression : expression MINUS expression COLON'''
+	'''expression : ID MINUS NUMBER COLON
+				  | NUMBER MINUS NUMBER COLON'''
 	p[0] = ("minus-expression", p[1] , p[2] ,p[3])
 
 
@@ -36,11 +38,14 @@ def p_Id(p):
 	p[0] = p[1]
 
 def p_lessthan(p):
-	'''expression : expression LESSTHAN expression COLON'''
+	'''expression : ID LESSTHAN NUMBER COLON
+				  | NUMBER LESSTHAN NUMBER'''
 	p[0] = ("less-than", p[1] < p[3])
 
 def p_print(p):
-	'''expression : PRINT expression COLON '''
+	'''expression : PRINT NUMBER COLON
+				  | PRINT STRING COLON
+				  | PRINT expression COLON'''
 	p[0] = ("print-statment", p[2])
 	print(p[2])
 	
@@ -54,8 +59,3 @@ def p_error(p):
 
 x = yacc()
 
-test_parse = '''a =  "gggg";
-print a;'''
-
-print(test_parse)
-print(x.parse(test_parse))
