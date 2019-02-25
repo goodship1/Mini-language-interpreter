@@ -54,7 +54,8 @@ def p_error(p):
 
 x = yacc()
 
-test_parse = '''a =  "gggg";'''
+test_parse = '''a =  "gggg";
+print a;'''
 
 print(test_parse)
 print(x.parse(test_parse))
