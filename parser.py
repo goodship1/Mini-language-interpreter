@@ -49,8 +49,10 @@ def p_print(p):
 	p[0] = ("print-statment", p[2])
 	print(p[2])
 	
-def if_statment(p):
-	pass
+def if_statementp):
+	''' if : IF expression '''
+	p[0] = ("if-statement" p[1])
+	
 	
 	
 def p_error(p):
