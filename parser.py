@@ -3,7 +3,7 @@ from ply.yacc import yacc
 
 symbol_table = dict()
 
-def p_assign(p):
+def p_Assignment(p):
     '''expression : ID EQUALS expression COLON
 				  | ID EQUALS NUMBER COLON
 				  | ID EQUALS STRING COLON'''
@@ -29,8 +29,16 @@ def p_Factor(p):
 
 def p_String(p):
 	'''expression : STRING'''
-	p[0] = p[1]
-	
+        p[0] = p[1]
+
+
+def p_Times(p):
+    '''expression : ID TIMES NUMBER COLON
+                  | NUMBER TIMES NUMBER COLON'''
+    p[0] = ("times",p[1] , p[2] ,p[3])
+
+
+
 	
 def p_Id(p):
 	'''expression : ID'''
@@ -42,22 +50,25 @@ def p_lessthan(p):
 				  | NUMBER LESSTHAN NUMBER'''
 	p[0] = ("less-than", p[1] < p[3])
 
-def p_print(p):
+def p_Print(p):
 	'''expression : PRINT NUMBER COLON
 				  | PRINT STRING COLON
 				  | PRINT expression COLON'''
 	p[0] = ("print-statment", p[2])
 	print(p[2])
 	
-def if_statementp):
-	''' if : IF expression '''
-	p[0] = ("if-statement" p[1])
-	
-	
+def If_Statement(p):
+	''' if : IF expression COLON END expression COLON ELSE '''
+	p[0] = ("IF-Statement" p[2],p[3])
+
+
+def else_Statement(p):
+    '''else : ELSE END expression COLON '''
+    p[1] =
+
 	
 def p_error(p):
 	print "parser error"
 
 
-x = yacc()
 

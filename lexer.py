@@ -7,11 +7,11 @@ import re
 reserved = {"if":"IF","else":"ELSE","print":"PRINT"}
 
 tokens = ["ID","EQUALS","LESSTHAN",
-            "STRING","NUMBER","COLON","MINUS",'PLUS'
+            "STRING","NUMBER","COLON","MINUS",'PLUS', 'END'
             ]+list(reserved.values())
 
 
-"""simple tokens"""
+
 t_COLON = r'\;'
 t_NUMBER = r'\d+'
 t_EQUALS = r'='
@@ -19,7 +19,8 @@ t_MINUS = r'-'
 t_PLUS = r'\+'
 t_LESSTHAN = r'\<'
 t_STRING = r'(\".*\"|\'.*\')'
-t_ignore = "\t"
+t_END = r'\:'
+t_IGNORE = "\t"
 
 
 
