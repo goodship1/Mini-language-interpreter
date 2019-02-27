@@ -37,8 +37,6 @@ def p_Times(p):
                   | NUMBER TIMES NUMBER COLON'''
     p[0] = ("times",p[1] , p[2] ,p[3])
 
-
-
 	
 def p_Id(p):
 	'''expression : ID'''
@@ -64,7 +62,7 @@ def If_Statement(p):
 
 def else_Statement(p):
     '''else : ELSE END expression COLON '''
-    p[1] =
+    p[1] = ("else", p[1])
 
 	
 def p_error(p):
