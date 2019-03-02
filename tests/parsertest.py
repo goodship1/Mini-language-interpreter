@@ -2,21 +2,18 @@ import pytest
 from lexer import tokens
 from ply.yacc import yacc
 
-def p_Number(p):
-    '''expression : NUMBER'''
-    p[0] = p[1]
-
-def p_assignment(p):
-    '''expression : ID EQUALS expression COLON'''
-    pass
-
 
 def assignment_Number():
     '''testing assignment of number'''
-    pass
+    parser = yacc()
+    assignment_Number = parser.parse('x=10;')
+    assert(assignment_Number) == "(assignment,'x','=','10')"  
 
 def assignment_String():
     '''test assignmend of string'''
-    pass
-
-
+    parser = yacc()
+    assignment_String = parser.parse("x='Test';")
+    assert(assignment_String) == "(assignment,'x','=',''Test'')
+    
+    
+ 
