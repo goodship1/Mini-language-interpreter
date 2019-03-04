@@ -8,7 +8,7 @@
 
 ```python
 
-Toy language 
+The Tiny Language
 
 a = 20;
 
