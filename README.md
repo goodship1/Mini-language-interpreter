@@ -1,9 +1,9 @@
-# Interpreter
-
-Interpreter for a toy programming language writen using python using ply
+### TinyLanguage 
 
 
-# Toy Language
+
+### The Tiny language 
+
 
 
 ```python
