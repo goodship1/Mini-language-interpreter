@@ -1,5 +1,18 @@
 ### TinyLanguage 
 
+Supported Operations
+
+Assignment - Integers and Strings
+
+If statement -  If expression: expression
+
+Print statement - print expression colon
+
+Addition - Identifier + number , number + number , Identifier + Identifier
+
+Subtraction -  Identifier - number  , number - number , Identifier - Identifier
+
+Less-than statement  - Identifier < number colon , number < number colon 
 
 
 ### The Tiny language 
