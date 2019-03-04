@@ -11,13 +11,15 @@ def p_Assignment(p):
     symbol_table[p[1]] = p[3]
 
 
-def p_add(p):
+
+
+def p_Addition(p):
 	'''expression : ID PLUS NUMBER COLON
 				  | NUMBER PLUS NUMBER COLON'''
 	p[0] =  ("add" ,p[1],p[2],p[3])
 
 
-def p_minus(p):
+def p_Subtraction(p):
 	'''expression : ID MINUS NUMBER COLON
 				  | NUMBER MINUS NUMBER COLON'''
 	p[0] = ("minus-expression", p[1] , p[2] ,p[3])
@@ -32,7 +34,8 @@ def p_String(p):
         p[0] = p[1]
 
 
-def p_Times(p):
+	
+def p_Multicaption(p):
     '''expression : ID TIMES NUMBER COLON
                   | NUMBER TIMES NUMBER COLON'''
     p[0] = ("times",p[1] , p[2] ,p[3])
@@ -43,10 +46,16 @@ def p_Id(p):
 	#needs to check if key word
 	p[0] = p[1]
 
-def p_lessthan(p):
+def p_Lessthan(p):
 	'''expression : ID LESSTHAN NUMBER COLON
 				  | NUMBER LESSTHAN NUMBER'''
 	p[0] = ("less-than", p[1] < p[3])
+
+def p_Greaterthan(p):
+	'''expression : ID GREATERTHAN NUMBER COLON
+		      | NUMBER GREATERTHAN NUMBER COLON'''
+	p[0] = ("Greaterthan",p[1] > p[3])
+	
 
 def p_Print(p):
 	'''expression : PRINT NUMBER COLON
@@ -63,6 +72,7 @@ def If_Statement(p):
 def else_Statement(p):
     '''else : ELSE END expression COLON '''
     p[1] = ("else", p[1])
+
 
 	
 def p_error(p):
