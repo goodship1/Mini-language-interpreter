@@ -2,27 +2,17 @@ import pytest
 import ply.lex as lex
 import re
 
-toy_Language = """
-        a = 20;
-        if(a < 10){
-            print "wow a is small";
-            }
-        else{
-            print a;
-            }
-        """
 
 
 string_Test = "a =""hello" #hello should be tokenzed to string and a name and equals as EQUALS
 number_Test = "200"
 test_Reserved_words = ["if","print","else"]
-test_Assignment = "a = hello"
+test_Assignment = "a = hello;"
 test_Name = "GOODSHIP1"
-test_Braces = ['{',"}","(",")"]
-test_Operations = ["=","<","+","-","*"]
+test_Operations = ["=","<","+","-","*",">"]
 test_colon = ';'
 
-tests = [string_Test,number_Test,test_Reserved_words,toy_Language,test_Assignment,test_Name]
+tests = [string_Test,number_Test,test_Reserved_words,test_Assignment,test_Name]
 
 """copy of lexer.py source list of tokens for tokenzing"""
 
