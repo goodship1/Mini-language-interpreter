@@ -1,5 +1,8 @@
 ### TinyLanguage 
 
+Work in progress in programming language i am building
+
+
 Supported Operations
 
 Assignment - Integers and Strings

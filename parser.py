@@ -48,13 +48,13 @@ def p_Id(p):
 
 def p_Lessthan(p):
 	'''expression : ID LESSTHAN NUMBER COLON
-				  | NUMBER LESSTHAN NUMBER'''
-	p[0] = ("less-than", p[1] < p[3])
+				  | NUMBER LESSTHAN NUMBER COLON'''
+	p[0] = ("less-than", p[1] ,p[2], p[3])
 
 def p_Greaterthan(p):
 	'''expression : ID GREATERTHAN NUMBER COLON
 		      | NUMBER GREATERTHAN NUMBER COLON'''
-	p[0] = ("Greaterthan",p[1] > p[3])
+	p[0] = ("Greaterthan",p[1] ,p[2] , p[3])
 	
 
 def p_Print(p):
@@ -65,18 +65,19 @@ def p_Print(p):
 	print(p[2])
 	
 def If_Statement(p):
-	''' if : IF expression COLON END expression COLON ELSE '''
-	p[0] = ("IF-Statement" p[2],p[3])
+	''' if : IF expression  END expression  ELSE '''
+	p[0] = ("IF-Statement" ,  p[2],p[3])
 
 
 def else_Statement(p):
-    '''else : ELSE END expression COLON '''
+    '''else : ELSE END expression '''
     p[1] = ("else", p[1])
 
 
 	
 def p_error(p):
 	print "parser error"
+
 
 
 
