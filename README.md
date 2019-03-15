@@ -7,7 +7,7 @@ Supported Operations
 
 Assignment - Integers and Strings
 
-If statement -  If expression: expression
+If else statement -  If expression: expression
 
 Print statement - print expression colon
 
