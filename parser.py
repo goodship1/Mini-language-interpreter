@@ -64,14 +64,10 @@ def p_Print(p):
 	p[0] = ("print-statment", p[2])
 	print(p[2])
 	
-def If_Statement(p):
-	''' if : IF expression  END expression  ELSE '''
-	p[0] = ("IF-Statement" ,  p[2],p[3])
+def If_Else_statement(p):
+	''' if : IF expression  END expression  ELSE END expression '''
+	pass
 
-
-def else_Statement(p):
-    '''else : ELSE END expression '''
-    p[1] = ("else", p[1])
 
 
 	
