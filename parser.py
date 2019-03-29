@@ -66,7 +66,8 @@ def p_Print(p):
 	
 def If_Else_statement(p):
 	''' if : IF expression  END expression  ELSE END expression '''
-	pass
+	p[0] = ("if-statmenet-else",p[1],p[4],p[7])
+	
 
 
 
