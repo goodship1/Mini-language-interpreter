@@ -48,7 +48,8 @@ def p_Id(p):
 
 def p_Lessthan(p):
 	'''expression : ID LESSTHAN NUMBER COLON
-				  | NUMBER LESSTHAN NUMBER COLON'''
+				  | NUMBER LESSTHAN NUMBER COLON
+				  | NUMBER LESSTHAN NUMBER'''
 	p[0] = ("less-than", p[1] ,p[2], p[3])
 
 def p_Greaterthan(p):
