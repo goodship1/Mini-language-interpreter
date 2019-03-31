@@ -44,5 +44,7 @@ def times_Expression():
  def greaterthan_Expression():
     '''number > number colon test'''
     greaterthan = global parse.parse("100 > 20;")
-    pass    
-            
+    assert(greaterthan) =="('greaterthan','>','100','20')"    
+ 
+def if-Else-Statement():
+    pass
