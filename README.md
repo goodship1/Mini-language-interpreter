@@ -1,22 +1,4 @@
-### TinyLanguage 
-
-Work in progress in programming language i am building
-
-
-Supported Operations
-
-Assignment - Integers and Strings
-
-If else statement -  If expression: expression
-
-Print statement - print expression colon
-
-Addition - Identifier + number , number + number , Identifier + Identifier
-
-Subtraction -  Identifier - number  , number - number , Identifier - Identifier
-
-Less-than statement  - Identifier < number colon , number < number colon 
-
+A basic Interpreter written in python for a toy language called the Tiny language.
 
 ### The Tiny language 
 
